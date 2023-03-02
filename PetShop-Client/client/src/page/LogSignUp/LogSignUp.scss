@@ -1,0 +1,85 @@
+@import "../../scss/index.scss";
+
+.logsignup {
+    
+    &__vendedor {
+        overflow: hidden;
+        min-height: 100vh;
+        background-color: $primary-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            
+            bottom: unset;
+            text-align: center;
+
+            h1 {
+                font-weight: bold;
+                font-size: 40px;
+                margin-bottom: 70px;
+                display: inline-block;
+                color: $font-primary;
+            }
+            
+            button {
+                display: block;
+                width: 100%;
+                border-radius: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px 0;
+
+                &:first-of-type {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    
+    &__cliente {
+        overflow: hidden;
+        min-height: 100vh;
+        background-color: $primary-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $font-primary;
+
+        div {
+            
+            bottom: unset;
+            text-align: center;
+
+            h1 {
+                font-weight: bold;
+                font-size: 40px;
+                margin-bottom: 70px;
+                display: inline-block;
+            }
+            
+            button {
+                display: block;
+                width: 100%;
+                border-radius: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px 0;
+
+                &:first-of-type {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+.logo {
+    position: relative;
+    top: 50%;
+    color: $font-primary;
+    font-weight: bold;
+    font-size: 40px;
+}
+

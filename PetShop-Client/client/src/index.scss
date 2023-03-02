@@ -1,59 +1,60 @@
 @import "./scss/index.scss";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: $primary;
-  background-color: $primary-dark;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: $primary-light;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  background-color: #F0EBCE;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn {
+  box-shadow: none !important;
 }
 
+.btn.btn-primary {
+  background-color: $primary-light;
+  border-color: $primary-light;
+  &:hover {
+    background-color: rgb(240, 235, 206, 1);
+    color: $font-green-dark;
+  }
+}
+
+.btn.btn-outline-primary {
+  border-color: $border-primary;
+  color: $primary-light;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgb(240, 235, 206, 0.3) !important;
+  }
+}
+
+
+input.form-control,
+textarea.form-control {
+  background-color: $primary-light;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid $border-dark;
+  color: $font-green-dark !important;
+  margin-bottom: 10px;
+
+  &:focus {
+    background-color: $background-light;
+    box-shadow: none;
+    border-bottom: 1px solid $border-primary;
+  }
+}

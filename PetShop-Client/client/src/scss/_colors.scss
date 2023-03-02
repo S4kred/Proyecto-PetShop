@@ -4,15 +4,16 @@ $primary-dark-light: #4E6C50;
 $primary-dark: #395144;
 
 $font-primary: $primary;
-$font-light: #fff;
-$font-dark: #333;
+$font-light: #82c505;
+$font-dark: #080808;
+$font-green-dark: #395144;
 
-$border-primary: $primary;
-$border-light: #fff;
+$border-primary: $primary-light;
+$border-light: hsl(71, 93%, 48%);
 $border-grey: #38444d;
 $border-dark: $primary-dark;
 
-$background-light: #fff;
-$background-dark-light: $primary-dark-light;
+$background-light: $primary;
+$background-dark: $primary-dark;
 
 $danger: #e0245e;

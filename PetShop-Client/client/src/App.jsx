@@ -1,23 +1,24 @@
-import { useState } from 'react'
-import PetShop from './assets/logo.png'
-import './App.scss'
+import { useState } from "react";
+import LogSignUp from "./page/LogSignUp";
+import { ToastContainer } from "react-toastify";
 
-function App() {
+export default function App() {
+  const [user, setUser] = useState(null);
 
   return (
-    <div className="App">
-      <div>
-        <a target="_blank">
-          <img src={PetShop} className="logo" alt="PetShop logo" />
-        </a>
-      </div>
-      <h1>PetShop</h1>
-      <div className="button-container">
-      <button className="button" style={{ marginRight: '20px' }}>Cliente</button>
-      <button className="button">Vendedor</button>
-      </div>
+    <div>
+      {user ? (<h1>Estas logueado</h1>) : (<div><LogSignUp /></div>)}
+      <ToastContainer 
+      position="top-right" 
+      autoClose={5000} 
+      hideProgressBar 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnVisibilityChange 
+      draggable 
+      pauseOnHover 
+      /> 
     </div>
-  )
+  );
 }
-
-export default App
