@@ -3,6 +3,9 @@ import { Container, Row, Col, Button } from  "react-bootstrap";
 import "./LogSignUp.scss";
 import BasicModal from '../../components/Modal/BasicModal/BasicModal';
 import RegistroCliente from '../../components/RegistroCliente';
+import LoginForm from "../../components/LoginForm";
+import PetShop from "../../assets/logo.png";
+import RegistroVendedor from "../../components/RegistroVendedor";
 
 export default function LogSignUp() {
     const [showModal, setShowModal] = useState(false);
@@ -17,7 +20,6 @@ export default function LogSignUp() {
         <>
             <Container className="logsignup" fluid>
                 <Row>
-                    <ComponenteVendedor openModal={openModal} setShowModal={setShowModal} />
                     <NombreLogo />
                     <ComponenteCliente openModal={openModal} setShowModal={setShowModal} />
                 </Row>
@@ -33,24 +35,8 @@ export default function LogSignUp() {
 function NombreLogo () {
     return (
         <Col md="auto">
+            <img className='logoPng' src={PetShop} />
             <h1 className="logo">PetShop</h1>
-        </Col>
-    );
-}
-
-function ComponenteVendedor(props) {
-    const { openModal, setShowModal} = props;
-
-    return (
-        <Col className="logsignup__vendedor" xs >
-            
-            <div>
-                <h1>Sos <br/>vendedor ?</h1>
-                <div className="button-container">
-                <Button variant="primary" onClick={() => openModal(<h2>Formulario de Registro</h2>)} >Regístrate</Button>
-                <Button variant="outline-primary" onClick={() => openModal(<h2>Formulario de iniciar sesión</h2>)} >Iniciar sesión</Button>
-                </div>
-            </div>
         </Col>
     );
 }
@@ -61,12 +47,34 @@ function ComponenteCliente(props) {
     return (
         <Col className="logsignup__cliente" xs >
             <div>
-                <h1>Sos <br/>cliente ?</h1>
-                <div className="button-container">
+                <h1>Bienvenido a Pet-Shop!<br/>Si sos cliente inicia sesión,<br/>si no, puedes registrarte.</h1>
+                <div>
                 <Button variant="primary" onClick={() => openModal(<RegistroCliente setShowModal={setShowModal} />)} >Regístrate</Button>
-                <Button variant="outline-primary" onClick={() => openModal(<h2>Formulario de iniciar sesión</h2>)}>Iniciar sesión</Button>
+                <Button variant="outline-primary" onClick={() => openModal(<LoginForm setShowModal={setShowModal} />)}>Iniciar sesión</Button>
                 </div>
+                <p>Logueo como vendedor master<br/>Usuario: vendedor01 Contraseña: 123456</p>
             </div>
         </Col>
     );
 }
+
+
+/*
+Este código importa varios módulos de React y Bootstrap, 
+así como algunos componentes personalizados. 
+Luego, define un componente llamado LogSignUp que renderiza 
+una estructura de contenedor y fila con tres columnas. 
+Dos de estas columnas contienen botones que, al hacer clic en ellos, 
+abren un modal correspondiente a la acción de 
+"iniciar sesión" o "registrarse" como cliente o vendedor.
+
+El componente LogSignUp también contiene un estado local que 
+se actualiza cuando se abre el modal y cuando se define su contenido. 
+Finalmente, se utiliza un componente de modal personalizado 
+llamado BasicModal para renderizar el contenido del modal en la pantalla.
+
+Además, hay dos componentes adicionales definidos, 
+NombreLogo y ComponenteVendedor/ComponenteCliente, 
+que renderizan un logotipo y la estructura de botones 
+en cada una de las dos columnas respectivas.
+*/
