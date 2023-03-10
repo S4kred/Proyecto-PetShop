@@ -2,41 +2,10 @@
 
 .logsignup {
     
-    &__vendedor {
-        overflow: hidden;
-        min-height: 100vh;
-        background-color: $primary-dark;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        div {
-            
-            bottom: unset;
-            text-align: center;
-
-            h1 {
-                font-weight: bold;
-                font-size: 40px;
-                margin-bottom: 70px;
-                display: inline-block;
-                color: $font-primary;
-            }
-            
-            button {
-                display: block;
-                width: 100%;
-                border-radius: 50px;
-                font-size: 20px;
-                font-weight: bold;
-                padding: 10px 0;
-
-                &:first-of-type {
-                    margin-bottom: 20px;
-                }
-            }
-        }
+    .col-logo {
+        background-color: $primary-light;
     }
+    
     
     &__cliente {
         overflow: hidden;
@@ -67,6 +36,10 @@
                 font-weight: bold;
                 padding: 10px 0;
 
+                &:hover {
+                    border-color: $primary;
+                }
+
                 &:first-of-type {
                     margin-bottom: 20px;
                 }
@@ -96,3 +69,4 @@
     bottom: -30%;
     width: 150px;
 }
+

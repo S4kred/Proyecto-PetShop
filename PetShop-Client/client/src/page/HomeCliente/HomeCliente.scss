@@ -1,5 +1,38 @@
 @import "../../scss/index.scss";
 
+#root {
+  background-color: $primary;
+}
+
 .home-cliente {
+
+  .row-1 {
+    margin-top: 40px;
+  }
+
+  .col-1 {
+    width: 70%;
+    border-left: 2px solid;
+    border-color: $border-dark;
+  }
   
+}
+
+.chkbox-cast {
+  color: $border-dark;
+}
+
+.chkbox-cast:checked {
+  background-color: $border-dark;
+}
+.row1-registro {
+  margin-bottom: 20px;
+}
+
+.row2-registro {
+  margin-bottom: 20px;
+}
+
+.row3-registro {
+  margin-bottom: 20px;
 }

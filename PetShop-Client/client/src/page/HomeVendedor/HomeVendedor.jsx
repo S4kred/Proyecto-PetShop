@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Button } from  "react-bootstrap";
 import BasicModal from '../../components/Modal/BasicModal/BasicModal';
-import PetShop from "../../assets/logo.png";
 import RegistroVendedor from "../../components/RegistroVendedor";
 
 import "./HomeVendedor.scss"
@@ -33,14 +32,6 @@ export default function HomeVendedor() {
   );
 }
 
-function NombreLogo () {
-  return (
-      <Col md="auto">
-          <img className='logoPng' src={PetShop} />
-          <h1 className="logo">PetShop</h1>
-      </Col>
-  );
-}
 
 function ComponenteVendedor(props) {
   const { openModal, setShowModal} = props;

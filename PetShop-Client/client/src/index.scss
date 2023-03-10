@@ -54,9 +54,46 @@ textarea.form-control {
   margin-bottom: 10px;
   font-size: 25px;
 
+  &:up {
+    background-color: $primary-dark;
+  }
+
   &:focus {
     background-color: $background-light;
     box-shadow: none;
     border-bottom: 1px solid $border-primary;
+  }
+  
+  
+
+}
+
+
+input.form-check-input {
+
+  border-color: $border-dark;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:checked {
+    background-color: $border-dark;
+    border-color: $border-light;
+    color: $font-primary
+  }
+}
+
+select.form-select {
+  background-color: $primary-light;
+  border-color: $primary-light;
+  
+  &:focus {
+    border-color: $border-primary;
+    box-shadow:  0px 0px 25px $border-primary;
+  }
+
+  &:hover {
+    background-color: $primary-light;
   }
 }

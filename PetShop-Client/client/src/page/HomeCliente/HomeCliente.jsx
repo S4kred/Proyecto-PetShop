@@ -1,9 +1,21 @@
-import React from 'react'
+import { Container, Row, Col } from  "react-bootstrap";
+import FormularioMascota from "../../components/FormularioMascota/"
+import ListadoDeMascotas from "../../components/ListadoDeMascota"
 
 import "./HomeCliente.scss"
 
 export default function HomeCliente() {
+
+
   return (
-    <div><h2>Estamos en Home Cliente</h2></div>
+    <>
+      <Container className="home-cliente" fluid>
+        <Row className='row-1'>
+          <FormularioMascota />
+          <ListadoDeMascotas />
+        </Row>
+      </Container>  
+    </>
   )
 }
+

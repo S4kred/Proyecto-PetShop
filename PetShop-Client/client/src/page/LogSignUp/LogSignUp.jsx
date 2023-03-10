@@ -34,7 +34,7 @@ export default function LogSignUp() {
 
 function NombreLogo () {
     return (
-        <Col md="auto">
+        <Col className='col-logo' md="auto">
             <img className='logoPng' src={PetShop} />
             <h1 className="logo">PetShop</h1>
         </Col>
@@ -52,7 +52,6 @@ function ComponenteCliente(props) {
                 <Button variant="primary" onClick={() => openModal(<RegistroCliente setShowModal={setShowModal} />)} >Regístrate</Button>
                 <Button variant="outline-primary" onClick={() => openModal(<LoginForm setShowModal={setShowModal} />)}>Iniciar sesión</Button>
                 </div>
-                <p>Logueo como vendedor master<br/>Usuario: vendedor01 Contraseña: 123456</p>
             </div>
         </Col>
     );
