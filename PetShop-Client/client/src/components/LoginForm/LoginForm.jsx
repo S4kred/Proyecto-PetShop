@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { isEmailValid } from "../../utils/validations"
 import clienteAxios from '../../config/axios';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../context/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 
 import "./LoginForm.scss";
 
@@ -14,7 +14,7 @@ export default function LoginForm() {
   const [formData, setFormData] = useState(initialFormValue());
   const [loginLoading, setloginLoading] = useState(false);
   const navigate = useNavigate();
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useAuth()
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -38,13 +38,16 @@ export default function LoginForm() {
         };
         
         const { data } = await clienteAxios.post("/usuarios/login", userTemp)
+        console.log(data)
+        console.log(auth)
         localStorage.setItem('token', data.token)
-
+        const tipovendedor = data.tipovendedor;
+        setAuth(data)
         // Acceder al atributo deseado del usuario logueado
-        console.log(auth);
         
+        console.log(tipovendedor)
         setloginLoading(false)
-        auth.tipovendedor ? navigate('/vendedor') : navigate('/cliente')
+        tipovendedor ? navigate('/vendedor') : navigate('/cliente')
         
       } catch (error) {
         console.log(error)

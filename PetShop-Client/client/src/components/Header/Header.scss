@@ -1,0 +1,23 @@
+@import "../../scss/index.scss";
+
+.header-cliente {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: $background-dark;
+  height: 20%;
+  font-weight: bold;
+  text-align: center;
+  color: $font-dark;
+  padding: 20px;
+
+  span.spanheader {
+    color: $font-primary;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+  
+}

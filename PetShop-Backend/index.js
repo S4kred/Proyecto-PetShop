@@ -23,8 +23,8 @@ const corsOptions = {
     } else {
       callback(new Error("No Permitido por CORS"))
     }
-  }
-}
+  },
+};
 
 app.use(cors(corsOptions));
 

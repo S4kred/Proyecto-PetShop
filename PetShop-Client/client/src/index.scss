@@ -1,4 +1,4 @@
-@import "./scss/index.scss";
+@import "./../src/scss/index.scss";
 
 :root {
   margin: 0;
@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: $primary-light;
+  background-color: $font-green-dark;
 }
 
 code {
@@ -26,19 +26,20 @@ code {
 .btn.btn-primary {
   background-color: $primary-light;
   border-color: $primary-light;
+  color: $font-dark;
   &:hover {
-    background-color: rgb(240, 235, 206, 1);
-    color: $font-green-dark;
+    background-color: $font-green-dark;
+    color: $primary-dark-light;
   }
 }
 
 .btn.btn-outline-primary {
   border-color: $border-primary;
-  color: $primary-light;
+  color: $font-dark;
   &:hover,
   &:active,
   &:focus {
-    background-color: rgb(240, 235, 206, 0.3) !important;
+    background-color: $primary-light !important;
   }
 }
 
@@ -95,5 +96,23 @@ select.form-select {
 
   &:hover {
     background-color: $primary-light;
+  }
+}
+
+
+.col-sm-4 {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+
+.btn.btn-link {
+  text-align: center;
+  color: $font-dark;
+  text-decoration: none;
+  &:hover {
+    text-align: center;
+    color: $font-primary;
   }
 }

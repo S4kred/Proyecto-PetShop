@@ -1,8 +1,9 @@
 import { ToastContainer } from "react-toastify";
 import Routing from "./routes/Routing";
 
+
 export default function App() {
-    console.log(import.meta.env.VITE_BACKEND_URL)
+    
 
   return (
     
@@ -18,7 +19,7 @@ export default function App() {
       pauseOnVisibilityChange 
       draggable 
       pauseOnHover 
-      /> 
+      />
     </>
   );
 }

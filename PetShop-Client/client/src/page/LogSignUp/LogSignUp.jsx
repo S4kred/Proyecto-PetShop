@@ -6,6 +6,8 @@ import RegistroCliente from '../../components/RegistroCliente';
 import LoginForm from "../../components/LoginForm";
 import PetShop from "../../assets/logo.png";
 
+import './LogSignUp.scss';
+
 export default function LogSignUp() {
     const [showModal, setShowModal] = useState(false);
     const [contentModal, setContentModal] = useState(null);
