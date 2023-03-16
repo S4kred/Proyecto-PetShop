@@ -82,7 +82,7 @@ export default function RegistroVendedor(props) {
 
 function vendedorFormValue() {
   return {
-    tipo: "Vendedor",
+    tipovendedor: true,
     nombre: "",
     apellido: "",
     email: "",

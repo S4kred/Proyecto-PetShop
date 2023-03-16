@@ -2,16 +2,25 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import HomeCliente from "../page/HomeCliente";
 import HomeVendedor from "../page/HomeVendedor";
-import Error404 from "../page/Error404";
+import ConfirmarCuenta from "../page/ConfirmarCuenta";
+import AuthLayout from "../layout/AuthLayout";
+import LogSignUp from '../page/LogSignUp';
+import { AuthProvider } from '../context/AuthProvider';
+
 
 export default function Routing() {
   return (
     <Router>
-      <Routes>
-          <Route path='/Cliente' element={<HomeCliente />} />
-          <Route path='/Vendedor' element={<HomeVendedor />} />
-          <Route path='*' element={<p>Estas "Logueado" <br/>- "/Vendedor" para el home de vendedor<br/>- "/Cliente" para el home de cliente</p>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<AuthLayout />} >
+            <Route index element={<LogSignUp />} />
+            <Route path='/confirmar/:id' element={<ConfirmarCuenta />} />
+            <Route path='/cliente' element={<HomeCliente />} />
+            <Route path='/vendedor' element={<HomeVendedor />} />          
+          </Route>        
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }

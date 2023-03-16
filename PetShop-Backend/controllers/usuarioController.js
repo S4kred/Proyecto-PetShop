@@ -1,8 +1,9 @@
 import Usuario from "../models/Usuario.js";
 import generarJWT from "../helpers/generarJWT.js";
+import emailRegistro from "../helpers/emailRegistro.js";
 
 const registrar = async (req, res) => {
-  const { email } = req.body;
+  const { email, nombre } = req.body;
 
   // Prevenir usuarios registrados
   const existeUsuario = await Usuario.findOne({email})
@@ -13,9 +14,17 @@ const registrar = async (req, res) => {
   }
 
   try {
-    // Guardar un Nuevo Vendedor
+    // Guardar un Nuevo Usuario
     const usuario = new Usuario(req.body);
     const usuarioGuardado = await usuario.save();
+
+    // Enviar el mail
+    emailRegistro({
+      email,
+      nombre,
+      token: usuarioGuardado.token,
+    });
+
 
     res.json(usuarioGuardado); 
   } catch (error) {
@@ -26,7 +35,7 @@ const registrar = async (req, res) => {
 const perfil = (req, res) => {
   const { usuario } = req;
 
-  res.json({ usuario });
+  res.json( usuario );
 };
 
 

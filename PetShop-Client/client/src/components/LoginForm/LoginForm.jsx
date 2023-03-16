@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Form, Button, Spinner} from "react-bootstrap";
 import { values, size } from "lodash";
 import { toast } from "react-toastify";
 import { isEmailValid } from "../../utils/validations"
+import clienteAxios from '../../config/axios';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/AuthProvider';
 
 import "./LoginForm.scss";
+
 
 export default function LoginForm() {
   const [formData, setFormData] = useState(initialFormValue());
   const [loginLoading, setloginLoading] = useState(false);
+  const navigate = useNavigate();
+  const { auth } = useContext(AuthContext);
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
 
     let validCount = 0;
@@ -25,12 +31,28 @@ export default function LoginForm() {
       toast.warning("Email inválido");
     } else {
       setloginLoading(true);
-      toast.success("Login correcto");
+      try {
+        const userTemp = {
+          ...formData,
+          email: formData.email.toLowerCase(),
+        };
+        
+        const { data } = await clienteAxios.post("/usuarios/login", userTemp)
+        localStorage.setItem('token', data.token)
+
+        // Acceder al atributo deseado del usuario logueado
+        console.log(auth);
+        
+        setloginLoading(false)
+        auth.tipovendedor ? navigate('/vendedor') : navigate('/cliente')
+        
+      } catch (error) {
+        console.log(error)
+        toast.error(error.response.data.msg)
+        setloginLoading(false)
+      }
+
     }
-      
-
-    console.log(validCount);
-
   };
 
   const onChange = e => {

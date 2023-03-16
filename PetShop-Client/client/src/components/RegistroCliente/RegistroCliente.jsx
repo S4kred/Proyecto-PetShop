@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { values, size } from "lodash";
 import { isEmailValid } from '../../utils/validations';
+import clienteAxios from '../../config/axios';
+import { toast } from 'react-toastify';
 
 import "./RegistroCliente.scss";
-import { toast } from 'react-toastify';
 
 export default function RegistroCliente(props) {
   const { setShowModal } = props;
   const [formData, setFormData] = useState(clienteFormValue());
   const [loading, setloading] = useState(false);
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    console.log(formData);
-
+  
     let validCount = 0;
     values(formData).some(value => {
       value && validCount++;
@@ -32,9 +32,22 @@ export default function RegistroCliente(props) {
         toast.warning("La contraseña tiene que tener al menos 6 caracteres")
       } else {
         setloading(true);
-        toast.success("Formulario correcto")
-        setShowModal(false);
-        setFormData(initialFormValue());
+        try {
+          const userTemp = {
+            ...formData,
+            email: formData.email.toLowerCase(),
+          };
+          delete userTemp.repeatPassword;
+
+          const respuesta = await clienteAxios.post("/usuarios", userTemp)
+          console.log(respuesta)
+          setloading(false);
+          setShowModal(false);
+          toast.success("El registro fue correcto");
+
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
   };
@@ -82,7 +95,6 @@ export default function RegistroCliente(props) {
 
 function clienteFormValue() {
   return{
-    tipo: "Cliente",
     nombre: "",
     apellido: "",
     email: "",

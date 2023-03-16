@@ -5,7 +5,6 @@ import BasicModal from '../../components/Modal/BasicModal/BasicModal';
 import RegistroCliente from '../../components/RegistroCliente';
 import LoginForm from "../../components/LoginForm";
 import PetShop from "../../assets/logo.png";
-import RegistroVendedor from "../../components/RegistroVendedor";
 
 export default function LogSignUp() {
     const [showModal, setShowModal] = useState(false);

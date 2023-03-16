@@ -1,21 +1,13 @@
-import { useState } from "react";
-import LogSignUp from "./page/LogSignUp";
 import { ToastContainer } from "react-toastify";
 import Routing from "./routes/Routing";
-import { Button } from "react-bootstrap";
 
 export default function App() {
-  const [user, setUser] = useState(true);
-
-  const lInlOut = () => {
-    setUser(!user);
-  }
+    console.log(import.meta.env.VITE_BACKEND_URL)
 
   return (
+    
     <>
-    <div>
-      <Button onClick={lInlOut}> Loguear y Desloguear </Button>
-      {user ? (<Routing />) : (<div><LogSignUp /></div>)}
+      <Routing />
       <ToastContainer 
       position="top-right" 
       autoClose={5000} 
@@ -27,7 +19,6 @@ export default function App() {
       draggable 
       pauseOnHover 
       /> 
-    </div>
     </>
   );
 }

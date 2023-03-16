@@ -1,0 +1,18 @@
+@import "../../scss/index.scss";
+
+
+.confirmar-cuenta {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  h2, a {
+    color: $primary-dark;
+    text-align: center;
+  }
+  
+}
+
