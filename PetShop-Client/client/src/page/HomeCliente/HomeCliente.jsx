@@ -1,6 +1,6 @@
 import { Container, Row, Col } from  "react-bootstrap";
 import FormularioMascota from "../../components/FormularioMascota/"
-import ListadoDeMascotas from "../../components/ListadoDeMascota"
+import ListadoMascotas from "../../components/ListadoMascotas"
 
 import "./HomeCliente.scss"
 
@@ -10,9 +10,9 @@ export default function HomeCliente() {
   return (
     <>
       <Container className="home-cliente" fluid>
-        <Row className='row-1'>
+        <Row>
           <FormularioMascota />
-          <ListadoDeMascotas />
+          <Col><ListadoMascotas /></Col>
         </Row>
       </Container>  
     </>

@@ -3,30 +3,28 @@ import { Row, Col, Button, Form, FloatingLabel } from  "react-bootstrap";
 import { values, size } from "lodash"
 import { toast } from "react-toastify"
 import "./FormularioMascota.scss"
+import useMascotas from '../../hooks/useMascotas';
 
 
 export default function FormularioMascota() {
 
   const [formData, setFormData] = useState(mascotaValores())
 
+  const { guardarMascota } = useMascotas()
+
   const onSubmit = e => {
     e.preventDefault();
-
-    console.log(formData)
   
     let validCount = 0;
     values(formData).some(value => {
       value && validCount++;
       return null
     });
-
     if(validCount !== size(formData)) {
       toast.warning("Completa todos los campos del formulario")
     } else {
-
-      const mascota = formData;
-      console.log(mascota)
-  
+      guardarMascota(formData) 
+      setFormData(mascotaValores());
     }
   
   };
@@ -54,8 +52,8 @@ export default function FormularioMascota() {
           </Row>
           <Row className='row2-registro'>
             <Col md>
-              <FloatingLabel label="Años"  >
-                <Form.Control value={formData.años} type="number" min="0" max="25" onChange={e => setFormData({...formData, años: e.target.value})} />
+              <FloatingLabel label="Edad"  >
+                <Form.Control value={formData.edad} type="number" min="0" max="25" onChange={e => setFormData({...formData, edad: e.target.value})} />
               </FloatingLabel>
             </Col>
             <Col>                    
@@ -69,8 +67,8 @@ export default function FormularioMascota() {
               <FloatingLabel label="Esta castrado ?">
                 <Form.Select value={formData.castrado} aria-label="Floating label select example" onChange={e => setFormData({...formData, castrado: e.target.value})}>
                   <option>Selecciona si o no</option>
-                  <option value="Si">Si</option>
-                  <option value="No">No</option>
+                  <option value='true' >Si</option>
+                  <option value='false' >No</option>
                 </Form.Select>
               </FloatingLabel>
             </Col>
@@ -89,7 +87,7 @@ function mascotaValores() {
   return {
     tipo: "",
     nombre: "",
-    años: "",
+    edad: "",
     peso: "",
     castrado: ""
   }

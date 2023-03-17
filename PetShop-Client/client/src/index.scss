@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: $font-green-dark;
+  background-color: $background-light;
 }
 
 code {
@@ -99,18 +99,12 @@ select.form-select {
   }
 }
 
-
-.col-sm-4 {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-
 .btn.btn-link {
+  font-weight: bold;
   text-align: center;
   color: $font-dark;
   text-decoration: none;
+  
   &:hover {
     text-align: center;
     color: $font-primary;
