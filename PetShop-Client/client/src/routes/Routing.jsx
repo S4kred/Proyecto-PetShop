@@ -10,24 +10,27 @@ import HomeVendedor from "../page/HomeVendedor";
 
 import { AuthProvider } from '../context/AuthProvider';
 import { MascotasProvider } from "../context/MascotasProvider"; 
+import { PedidosProvider } from "../context/PedidosProvider";
 
 export default function Routing() {
   return (
     <Router>
       <AuthProvider>
         <MascotasProvider>
-          <Routes>
-            <Route path="/" element={<AuthLayout />} >
-                <Route index element={<LogSignUp />} />
-                <Route path='/confirmar/:id' element={<ConfirmarCuenta />} />
-            </Route>
-            <Route path='/vendedor' element={<RutaProtegidaVendedor />}>
-                <Route index element={<HomeVendedor />} />
-            </Route>
-            <Route path='/cliente' element={<RutaProtegida />}>
-                <Route index element={<HomeCliente />} />
-            </Route>           
-          </Routes>
+          <PedidosProvider>
+            <Routes>
+              <Route path="/" element={<AuthLayout />} >
+                  <Route index element={<LogSignUp />} />
+                  <Route path='/confirmar/:id' element={<ConfirmarCuenta />} />
+              </Route>
+              <Route path='/vendedor' element={<RutaProtegidaVendedor />}>
+                  <Route index element={<HomeVendedor />} />
+              </Route>
+              <Route path='/cliente' element={<RutaProtegida />}>
+                  <Route index element={<HomeCliente />} />
+              </Route>           
+            </Routes>
+          </PedidosProvider>
         </MascotasProvider>
       </AuthProvider>
     </Router>

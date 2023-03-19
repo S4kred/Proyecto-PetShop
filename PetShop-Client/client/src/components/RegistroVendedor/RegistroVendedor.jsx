@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { values, size } from "lodash";
 import { isEmailValid } from '../../utils/validations';
+import clienteAxios from '../../config/axios';
+import { toast } from 'react-toastify';
+
 
 import "./RegistroVendedor.scss";
-import { toast } from 'react-toastify';
 
 export default function RegistroVendedor(props) {
   const { setShowModal } = props;
   const [formData, setFormData] = useState(vendedorFormValue());
   const [loading, setloading] = useState(false);
 
-  const onSubmit = e => {   
+  const onSubmit = async e => {   
     e.preventDefault();
-    console.log(formData);
+    
 
     let validCount = 0;
     values(formData).some(value => {
@@ -32,9 +34,22 @@ export default function RegistroVendedor(props) {
         toast.warning("La contraseña tiene que tener al menos 6 caracteres")
       } else {
         setloading(true);
-        toast.success("Formulario correcto")
-        setShowModal(false);
-        setFormData(initialFormValue());
+        try {
+          const userTemp = {
+            ...formData,
+            email: formData.email.toLowerCase(),
+          };
+          delete userTemp.repeatPassword;
+
+          const respuesta = await clienteAxios.post("/usuarios", userTemp)
+          console.log(respuesta)
+          setloading(false);
+          setShowModal(false);
+          toast.success("El registro fue correcto");
+
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
   };
@@ -75,6 +90,7 @@ export default function RegistroVendedor(props) {
           {!loading ? "Cear cuenta" : <Spinner animation="border" />}
         </Button>
       </Form>
+      <Button variant='link' className='x' onClick={() => {setShowModal(false)}}>X</Button>
     </div>
   );
 }

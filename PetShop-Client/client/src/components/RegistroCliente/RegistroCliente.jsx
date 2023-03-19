@@ -59,6 +59,7 @@ export default function RegistroCliente(props) {
   return (
     <div className='sign-up-form'>
       <h2>Crea tu cuenta de cliente</h2>
+      
       <Form className='form-group' onSubmit={onSubmit} onChange={onChange}>
         <Form.Group>
           <Row>
@@ -88,6 +89,7 @@ export default function RegistroCliente(props) {
             {!loading ? "Cear cuenta" : <Spinner animation="border" />}
         </Button>
       </Form>
+      <Button variant='link' className='x' onClick={() => {setShowModal(false)}}>X</Button>
     </div>
   )
 }

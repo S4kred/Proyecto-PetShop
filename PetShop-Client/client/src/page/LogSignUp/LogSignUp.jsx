@@ -52,6 +52,7 @@ function ComponenteCliente(props) {
                 <div>
                 <Button variant="primary" onClick={() => openModal(<RegistroCliente setShowModal={setShowModal} />)} >Regístrate</Button>
                 <Button variant="outline-primary" onClick={() => openModal(<LoginForm setShowModal={setShowModal} />)}>Iniciar sesión</Button>
+                <p>Vendedor: vendedor@petshop.com <br />Password: 123456</p>
                 </div>
             </div>
         </Col>

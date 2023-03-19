@@ -6,6 +6,7 @@ const MascotasContext = createContext()
 export const MascotasProvider = ({children}) => {
 
   const [mascotas, setMascotas] = useState([])
+  const [mascota, setMascota] = useState({})
 
   useEffect(() => {
     const obtenerMascotas = async () => {

@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import { Col, Container } from  "react-bootstrap";
-import MascotasContext from '../../context/MascotasProvider';
 import useMascotas from '../../hooks/useMascotas';
 import Mascota from '../Mascota';
 
@@ -16,7 +13,6 @@ export default function ListadoMascotas() {
     <>
       { mascotas.length ? ( 
           <>
-            <h4>Lista de Mascotas</h4>
             {mascotas.map( mascota => (
               <Mascota 
                 key={mascota._id}

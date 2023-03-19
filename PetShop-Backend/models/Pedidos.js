@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
   const pedidosSchema = mongoose.Schema({
     tipo: {
-      type: Number,
+      type: String,
     },
     cantidadAlimento: {
       type: Number,
@@ -14,9 +14,12 @@ import mongoose from "mongoose";
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",
     },
-    mascota: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Mascota",
+    enviado: {
+      type: Boolean,
+      default: false,
+    },
+    nombre: {
+      type: String,
     }
   }
 );

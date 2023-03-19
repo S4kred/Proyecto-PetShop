@@ -58,7 +58,6 @@ class Perro extends Mascota {
     if (this.castrado && this.edad > 5) {
       complementos.push(1);
     }
-    console.log(complementos)
     const suma = complementos.reduce((total, actual) => total + actual, 0);
     return suma;
   }

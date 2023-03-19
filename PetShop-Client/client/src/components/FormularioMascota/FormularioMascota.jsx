@@ -4,6 +4,7 @@ import { values, size } from "lodash"
 import { toast } from "react-toastify"
 import "./FormularioMascota.scss"
 import useMascotas from '../../hooks/useMascotas';
+// import HistorialPedidosCliente from '../HistorialPedidosCliente/ListadoMascotas/HistorialPedidosCliente';
 
 
 export default function FormularioMascota() {
@@ -78,6 +79,7 @@ export default function FormularioMascota() {
           </Row>   
         </Form.Group>
       </Form>
+      {/* <HistorialPedidosCliente /> */}
     </Col>
   );
 }

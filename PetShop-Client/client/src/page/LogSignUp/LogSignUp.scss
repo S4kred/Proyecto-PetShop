@@ -16,8 +16,12 @@
         justify-content: center;
         color: $font-primary;
 
+        col {
+            justify-content: center;
+            display: flex;
+        }
+
         div {
-            
             bottom: unset;
             text-align: center;
 
@@ -46,9 +50,11 @@
             }
 
             p {
-                position: absolute;
-                bottom: 0;
-                text-align: center;
+                display: grid;
+                position: relative;
+                justify-content: center;
+                font-weight: bold;
+                margin-top: 200px;
             }
         }
     }
@@ -70,3 +76,7 @@
     width: 150px;
 }
 
+.logsignup__cliente.col {
+    justify-content: center;
+    display: flex;   
+}

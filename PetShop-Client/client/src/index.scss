@@ -110,3 +110,23 @@ select.form-select {
     color: $font-primary;
   }
 }
+
+
+.x.btn.btn-link {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  font-weight: bold;
+  text-align: right;
+  color: $font-dark;
+  text-decoration: none;
+  width: min-content;
+  
+  &:hover {
+    color: $font-primary;
+  }
+}
+
+.table-sm.table-striped.table-bordered.table-hover {
+  max-width: 100%;
+}

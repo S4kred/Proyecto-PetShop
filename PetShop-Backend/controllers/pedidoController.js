@@ -3,19 +3,19 @@ import Mascota from "../models/Mascota.js";
 
 const crearPedido = async (req, res) => {
   try {
-    const mascota = await Mascota.findOne({ _id: req.body.mascotaId, usuario: req.usuario._id });
-    console.log(mascota)
-    if (!mascota) {
-      return res.status(400).json({ error: 'No se encontró la mascota del usuario' });
-    }
+    // const mascota = await Mascota.findOne({ _id: req.body.mascotaId, usuario: req.usuario._id });
+    // console.log(mascota)
+    // if (!mascota) {
+    //   return res.status(400).json({ error: 'No se encontró la mascota del usuario' });
+    // }
 
-    const pedido = new Pedidos({
-      tipo: req.body.tipo,
-      cantidadAlimento: mascota.cantidadAlimento,
-      complementosDietarios: mascota.complementosDietarios,
-      usuario: req.usuario._id,
-      mascota: mascota._id
-    });
+    const pedido = new Pedidos( req.body
+      // tipo: req.body.tipo,
+      // cantidadAlimento: mascota.cantidadAlimento,
+      // complementosDietarios: mascota.complementosDietarios,
+      // usuario: req.usuario._id,
+      // mascota: mascota._id
+    );
 
     const pedidoEnBd = await pedido.save();
     res.json(pedidoEnBd);
@@ -25,13 +25,25 @@ const crearPedido = async (req, res) => {
   }
 };
 
-const recibirPedido = async (req, res) => {
+const obtenerPedido = async (req, res) => {
   try {
-    console.log("Recibiendo pedido")
+    const pedidos = await Pedidos.find().where("usuario").equals(req.usuario);
+
+    res.json(pedidos);
   } catch (error) {
-    console.log("Error a recibir pedido")
+    console.log("Error a obtener pedido")
   }
 };
 
+const obtenerPedidosClientes = async (req, res) => {
 
-export {crearPedido, recibirPedido};
+  try {
+    const pedidos = await Pedidos.find().populate('usuario').sort('usuario.nombre');
+    res.json(pedidos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener los pedidos.' });
+  }
+};
+
+export {crearPedido, obtenerPedido, obtenerPedidosClientes};
