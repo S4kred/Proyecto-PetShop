@@ -1,16 +1,25 @@
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
+import usePedidos from '../hooks/usePedidos';
+import './PedidosClientesParaVendedor.scss'
 
 
 const PedidosClientesParaVendedor = ({pedido}) => {
+
+  const { setEnviado } = usePedidos()
 
   const { _id, tipo, cantidadAlimento, complementosDietarios, usuario , enviado } = pedido;
   const nombreUsuario = usuario.nombre;
   const apellidoUsuario = usuario.apellido;
   const emailUsuario = usuario.email;
 
+  const handleDespachar = async () => {
+    await setEnviado(pedido);
+    window.location.reload();
+  }
+
   return (
-    <Table striped bordered hover size >
+    <Table striped bordered hover size="sm" className={enviado ? 'despachado' : 'nodespachado'}  >
       <thead>
           <tr>
             <th>Identificador del pedido</th>
@@ -18,8 +27,7 @@ const PedidosClientesParaVendedor = ({pedido}) => {
             <th>Cantidad de suplemento/suplementos para {tipo}</th>
             <th>Nombre y Apellido del cliente</th>
             <th>Email de contacto</th>
-            <th>Despachado</th>
-            <th></th>
+            <th>{(!enviado) ? 'No' : ''} Despachado</th>
           </tr>
       </thead>
       <tbody>
@@ -29,8 +37,7 @@ const PedidosClientesParaVendedor = ({pedido}) => {
           <td>{complementosDietarios} Unidad(es)</td>
           <td>{nombreUsuario} {apellidoUsuario}</td>
           <td>{emailUsuario}</td>
-          <td>{(!enviado) ? "No" : "Si"} </td>
-          <td><Button variant="primary" type='submit'>Despachar</Button></td>
+          <td>{(!enviado) ? <><Button variant="primary" type='submit' onClick={handleDespachar}>Despachar</Button></> : "Si"} </td>
         </tr>
       </tbody>
     </Table>

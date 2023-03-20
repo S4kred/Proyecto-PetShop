@@ -11,7 +11,7 @@ export default function HistorialPedidosCliente() {
 
   return (
     <>
-      <h4>Historial de pedidos</h4>
+      <h4 className='titulo'>Historial de pedidos</h4>
         { pedidos.length ? ( 
             <>
               {pedidos.map( pedido => (
@@ -24,7 +24,7 @@ export default function HistorialPedidosCliente() {
           ) : 
           ( 
             <>
-              <h2>No hay pedidos realizados</h2>
+              <h2 className='titulo'>No hay pedidos realizados</h2>
             </>
           )
         }      

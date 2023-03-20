@@ -46,4 +46,23 @@ const obtenerPedidosClientes = async (req, res) => {
   }
 };
 
-export {crearPedido, obtenerPedido, obtenerPedidosClientes};
+const pedidoEnviado = async (req, res) => {
+  const { id } =req.params;
+  const pedido = await Pedidos.findById(id);
+
+  if (pedido) {
+    pedido.enviado = req.body.enviado
+
+    try {
+      const enviarPedido = await pedido.save();
+      res.json(enviarPedido)
+    } catch (error) {
+      console.log(error)
+    }
+
+  } else {
+    res.status(404).json({msg: 'No encontrado'})
+  }
+}
+
+export {crearPedido, obtenerPedido, obtenerPedidosClientes, pedidoEnviado };

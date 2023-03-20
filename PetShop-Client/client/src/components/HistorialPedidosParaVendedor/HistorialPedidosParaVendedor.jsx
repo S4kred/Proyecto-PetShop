@@ -7,11 +7,9 @@ export default function HistorialPedidosParaVendedor() {
   
   const { pediosClientes } = usePedidos()
 
-  console.log(pediosClientes)
-
   return (
     <>
-      <h4>Pedidos a despachar y realizados</h4>
+      <h4 className='titulo'>Pedidos a despachar y realizados</h4>
         { pediosClientes.length ? ( 
             <>
               {pediosClientes.map( pedido => (
@@ -24,7 +22,7 @@ export default function HistorialPedidosParaVendedor() {
           ) : 
           ( 
             <>
-              <h2>No hay pedidos realizados</h2>
+              <h2 className='titulo'>No hay pedidos realizados</h2>
             </>
           )
         }      

@@ -16,9 +16,7 @@ const Header = () => {
             </h1>
           </Col>
           <Col sm={4}>
-            <nav>
               <Button variant="link" onClick={cerrarSesion}>Cerrar Sesión</Button>
-            </nav>
           </Col>
         </Row>
       </Container>
