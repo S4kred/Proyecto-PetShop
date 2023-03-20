@@ -6,6 +6,7 @@ const PedidosContext = createContext()
 export const PedidosProvider = ({children}) => {
 
   const [pedidos, setPedidos] = useState([])
+  const [pediosClientes, setPedidosClientes] = useState([])
 
 
   useEffect(() => {
@@ -30,7 +31,31 @@ export const PedidosProvider = ({children}) => {
       }
     }
 
+    const obtenerPedidosClientes = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        if(!token) return
+
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        }
+
+        const { data } = await clienteAxios('/pedidos/pedidosclientes', config)
+        console.log(data)
+        setPedidosClientes(data)
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     obtenerPedidos()
+    obtenerPedidosClientes()
+
+    
 
   }, [])
 
@@ -63,7 +88,8 @@ export const PedidosProvider = ({children}) => {
     <PedidosContext.Provider 
       value={{
         pedidos,
-        crearPedido
+        crearPedido,
+        pediosClientes
       }}
     >
       {children}

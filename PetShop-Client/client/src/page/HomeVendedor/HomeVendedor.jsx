@@ -1,49 +1,29 @@
-import React, { useState } from 'react'
-import { Container, Row, Col, Button } from  "react-bootstrap";
-import BasicModal from '../../components/Modal/BasicModal/BasicModal';
-import RegistroVendedor from "../../components/RegistroVendedor";
+import { Tab, Tabs } from  "react-bootstrap";
+import HistorialPedidosParaVendedor from "../../components/HistorialPedidosParaVendedor"
 
 import "./HomeVendedor.scss"
 
 export default function HomeVendedor() {
-  const [showModal, setShowModal] = useState(false);
-  const [contentModal, setContentModal] = useState(null);
-
-  const openModal = content => {
-    setShowModal(true);
-    setContentModal(content);
-  };
 
   return (
     <>
-      <Container className="home-vendedor" fluid>
-        <h1>Estas en cuenta Vendedor</h1>
-        <Row>
-          <ComponenteVendedor openModal={openModal} setShowModal={setShowModal} />
-          <Col><h2>Listado de Mascotas y Dueños</h2></Col>
-          <Col><h2>Lista de pedidos recibidos / marcar despachados</h2></Col>
-          <Col><h2>Listado de Vendedores</h2></Col>
-        </Row>
-      </Container>
-      <BasicModal show={showModal} setshow={setShowModal}>
-        {contentModal}
-      </BasicModal>    
+      <Tabs
+      defaultActiveKey="profile"
+      id="fill-tab-example"
+      className="mb-3"
+      fill
+    >
+      <Tab eventKey="home" title="Pedidos Recibidos">
+        <HistorialPedidosParaVendedor />
+      </Tab>
+      <Tab eventKey="profile" title="Listado de Mascotas y Dueños">
+      
+      </Tab>
+      <Tab eventKey="longer-tab" title="Listado de Vendedores">
+      
+      </Tab>
+    </Tabs>
     </>
   );
 }
 
-
-function ComponenteVendedor(props) {
-  const { openModal, setShowModal} = props;
-
-  return (
-      <Col>
-          <div>
-              <h3>Cuenta vendedor</h3>
-              <div>
-              <Button variant="primary" onClick={() => openModal(<RegistroVendedor setShowModal={setShowModal} />)} >Crear cuenta vendedor</Button>
-              </div>
-          </div>
-      </Col>
-  );
-}

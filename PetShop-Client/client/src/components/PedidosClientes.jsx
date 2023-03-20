@@ -1,6 +1,4 @@
 import Table from 'react-bootstrap/Table';
-import usePedidos from '../hooks/usePedidos';
-
 
 
 const PedidosClientes = ({pedido}) => {
@@ -8,23 +6,21 @@ const PedidosClientes = ({pedido}) => {
   const { _id, tipo, cantidadAlimento, complementosDietarios, usuario, enviado, nombre } = pedido;
 
   return (
-    <Table striped bordered hover size="sm" >
+    <Table striped bordered hover size="dark" >
       <thead>
           <tr>
-            <th>Tipo</th>
-            <th>Nombre de Mascota</th>
-            <th>Cantidad de Alimentos</th>
-            <th>Cantidad de Suplementos</th>
+            <th>Pedido para</th>
+            <th>Cantidad de alimento para {tipo}</th>
+            <th>Cantidad de suplemento/suplementos para {tipo}</th>
             <th>Despachado</th>
             <th>Identificador del pedido</th>
           </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{tipo}</td>
           <td>{nombre}</td>
-          <td>{cantidadAlimento}</td>
-          <td>{complementosDietarios}</td>
+          <td>{cantidadAlimento} Kg</td>
+          <td>{complementosDietarios} Unidad(es)</td>
           <td>{(!enviado) ? "No" : "Si"}</td>
           <td>{_id}</td>
         </tr>
