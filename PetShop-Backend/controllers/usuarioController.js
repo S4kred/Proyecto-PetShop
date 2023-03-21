@@ -94,5 +94,17 @@ const autenticar = async (req, res) => {
 
 };
 
+const obtenerVendedores = async (req, res) => {
+  try {
+    const vendedores = await Usuario.find({ tipovendedor: true }).sort('nombre');
+    res.json(vendedores);  
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener vendedores.' });
+    
+  }
+};
 
-export { registrar, perfil, confirmar, autenticar};
+
+
+export { registrar, perfil, confirmar, autenticar, obtenerVendedores};

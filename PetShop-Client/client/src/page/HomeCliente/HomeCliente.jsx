@@ -16,7 +16,7 @@ export default function HomeCliente() {
           <Col><ListadoMascotas /></Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="colPedidos">
             <HistorialPedidosCliente />
           </Col>
         </Row>

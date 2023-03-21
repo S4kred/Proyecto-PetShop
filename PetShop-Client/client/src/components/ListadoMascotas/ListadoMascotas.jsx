@@ -7,8 +7,6 @@ export default function ListadoMascotas() {
   
   const { mascotas } = useMascotas()
 
-  console.log(mascotas)
-
   return (
     <>
       { mascotas.length ? ( 

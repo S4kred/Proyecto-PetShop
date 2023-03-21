@@ -7,8 +7,6 @@ export default function HistorialPedidosCliente() {
   
   const { pedidos } = usePedidos()
 
-  console.log(pedidos)
-
   return (
     <>
       <h4 className='titulo'>Historial de pedidos</h4>

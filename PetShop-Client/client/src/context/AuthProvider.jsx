@@ -7,6 +7,7 @@ const AuthProvider = ({children}) => {
 
   const [cargando, setCargando] = useState(true)
   const [auth, setAuth] = useState({})
+  const [Vendedores, setVendedores] = useState([])
 
   useEffect(() => {
     const autenticarUsuario = async () => {
@@ -32,6 +33,28 @@ const AuthProvider = ({children}) => {
 
       setCargando(false)
     }
+
+    const obtenerVendedor = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        if(!token) return
+
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}` 
+          }
+        }
+
+        const { data } = await clienteAxios('/usuarios/obtenerVendedores', config)
+        setVendedores(data)
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    obtenerVendedor()
     autenticarUsuario()
   }, [])
 
@@ -46,7 +69,8 @@ const AuthProvider = ({children}) => {
         auth,
         setAuth,
         cargando,
-        cerrarSesion
+        cerrarSesion,
+        Vendedores
       }}
     >
       {children}

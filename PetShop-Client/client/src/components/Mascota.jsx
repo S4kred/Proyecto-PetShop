@@ -1,6 +1,4 @@
 import { Card, Button } from "react-bootstrap"
-import useMascotas from "../hooks/useMascotas";
-import useAuth from "../hooks/useAuth";
 import usePedidos from "../hooks/usePedidos";
 
 const Mascota = ({mascota}) => {
@@ -12,11 +10,11 @@ const Mascota = ({mascota}) => {
     const pedido = {tipo, cantidadAlimento, complementosDietarios, usuario, nombre}
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card>
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
         <Card.Text>
-          Necesita {cantidadAlimento} kg/s de alimento para {tipo} y {complementosDietarios} complemento/s dietarios.
+          Necesita {cantidadAlimento} Kg de alimento para {tipo} y {complementosDietarios} suplemento/suplementos dietario/dietarios.
         </Card.Text>
         <Button variant="primary" type='submit' onClick={() => crearPedido(pedido)}>Pedir</Button>
       </Card.Body>

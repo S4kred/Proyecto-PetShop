@@ -6,7 +6,7 @@ const PedidosClientes = ({pedido}) => {
   const { _id, tipo, cantidadAlimento, complementosDietarios, usuario, enviado, nombre } = pedido;
 
   return (
-    <Table striped bordered hover size="sm" variant='dark'>
+    <Table striped hover size="sm" variant='dark'>
       <thead>
           <tr>
             <th>Pedido para</th>

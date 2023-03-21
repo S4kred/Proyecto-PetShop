@@ -38,23 +38,16 @@ export default function LoginForm() {
         };
         
         const { data } = await clienteAxios.post("/usuarios/login", userTemp)
-        console.log(data)
-        console.log(auth)
         localStorage.setItem('token', data.token)
         const tipovendedor = data.tipovendedor;
         setAuth(data)
         // Acceder al atributo deseado del usuario logueado
-        
-        console.log(tipovendedor)
         setloginLoading(false)
         tipovendedor ? navigate('/vendedor') : navigate('/cliente')
-        
       } catch (error) {
-        console.log(error)
         toast.error(error.response.data.msg)
         setloginLoading(false)
       }
-
     }
   };
 
